@@ -1,5 +1,4 @@
 # Soding HW
-=============
 
 To start ensure you have **VirtualBox** and **Vagrant** installed on your system. Then clone this project and go to the project folder through terminal and type in followed by enter -
 
