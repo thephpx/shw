@@ -76,8 +76,15 @@ Vagrant.configure("2") do |config|
     usermod -aG www-data ubuntu
     sed -i \'s\\www-data\\ubuntu\\g\' /etc/apache2/envvars
     chmod -R 777 /var/www/html/soding/storage
+    
+    mv /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/111-default.conf
+    cp /vagrant/000-default.conf /etc/apache2/sites-available/000-default.conf
+
+    a2enmod rewrite
+
     service apache2 restart
     echo "create database soding" | mysql -uroot -proot
     mysql -uroot -proot soding < /vagrant/db.sql
+    php /var/www/html/soding/artisan migrate
     SHELL
 end
